@@ -1,5 +1,6 @@
 import hmm_forward
 import hmm_backward
+import hmm_viterbi
 from matfunc import Table, Vec, Matrix
 
 ## example 10.2 from Li Hang's book (Statistical Learning Methods), pg. 177
@@ -20,9 +21,10 @@ B = Matrix([b1,b2,b3])
 
 pi = Vec([0.2,0.4,0.4])
 
-T = 3
-O = Table([0,1,0]) # red , white, red
+O = Table([0,1,0,1,1,1,0]) # 0:red 1:white
 
-print "The prob is:\n", hmm_forward.forward(A,B,pi,O)
+print "The prob computed by fwd is:\n", hmm_forward.forward(A,B,pi,O)
 
-print "The prob is:\n", hmm_backward.backward(A,B,pi,O)
+print "The prob computed by bwd is:\n", hmm_backward.backward(A,B,pi,O)
+
+print "The best state sequence predicted by the given model using viterbi is:\n",hmm_viterbi.viterbi(A,B,pi,O)
