@@ -15,6 +15,7 @@ def forward(AMatrix, BMatrix, PiVec, Obers):
 	
 	prob = 0.0 # the prob wanted
 	alpha = [] # alpha is a 2-D array
+	T = len(Obers)
 	
 	#step1: initialize
 	for i in range (AMatrix.rows):
@@ -23,12 +24,11 @@ def forward(AMatrix, BMatrix, PiVec, Obers):
 		alpha[0].append(PiVec[j]*BMatrix[j][0])
 		
 	#step2: recursively compute alpha[t+1][i]
-	for t in range (0,len(Obers)-1): #
+	for t in range (T-1): #
 		for i in range (AMatrix.rows):
 			alpha[t+1].append(0) # create alpha[t+1][i], set default value 0
 			
 			for j in range (AMatrix.rows):
-				#print "t,i, j is ",t,i, j, "\n"
 				alpha[t+1][i] += alpha[t][j] * AMatrix[j][i]
 			alpha[t+1][i] *= BMatrix[i][Obers[t+1]]
 	
