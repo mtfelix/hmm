@@ -12,9 +12,11 @@ Inlcudes:
  
 To do:
 
-1. EM (Baum-Welch)
+1. pre/post processing
 
-2. pre/post processing
+2. training (supervised)
+
+3. EM (optional) 
  
 Hongfei Jiang
  
